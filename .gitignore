@@ -11,3 +11,6 @@ node_modules
 coverage
 .idea
 dist
+
+public/bower_components
+.env
