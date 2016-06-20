@@ -48,6 +48,7 @@ app.post('/', function (req, res) {
   if( languages[name] != undefined ){
     languages[name].votes += 1;
   }
+  io.sockets.emit('hi');
   res.json(languages);
 });
 
@@ -56,6 +57,5 @@ io.on('connection', function(socket){
     console.log('data', data);
     console.log(languages[data]);
     languages[data].votes += 1;
-    io.emit('language', languages);
   });
 });
