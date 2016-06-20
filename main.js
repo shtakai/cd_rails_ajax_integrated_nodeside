@@ -1,5 +1,8 @@
 var express = require('express');
+var bodyParser = require('body-parser')
 var app = express();
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
 var port = process.env.PORT || 3001;
@@ -35,6 +38,18 @@ languages = {
 // Routing
 app.use(express.static(__dirname + '/public'));
 
+app.post('/', function (req, res) {
+  res.setHeader('Content-Type', 'text/plain');
+  console.log('post');
+  console.log(req.body);
+  name = req.body.name;
+  console.log(languages[name]);
+  console.log(name)
+  if( languages[name] != undefined ){
+    languages[name].votes += 1;
+  }
+  res.json(languages);
+});
 
 io.on('connection', function(socket){
   socket.on('submit', function (data) {

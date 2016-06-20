@@ -9,6 +9,6 @@ $(function(){
 
   socket.on('language', function (data) {
     console.log(data);
-    $('.language').append(data);
+    $('div#language').html(data);
   });
 });

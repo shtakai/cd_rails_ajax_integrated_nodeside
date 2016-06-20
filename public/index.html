@@ -8,7 +8,7 @@
 </head>
 <body>
   test
-  <div class="language">
+  <div id="language">
 
   </div>
   <button class="language" id="javascript">Javascript</button>
@@ -16,6 +16,11 @@
   <button class="language" id="ruby">Ruby</button>
   <button class="language" id="ada">Ada</button>
   <button class="language" id="eiffel">Eiffel</button>
+  <form action="/" method="POST">
+    form
+    <input type="hidden" name="name" value="test">
+    <input type="submit" value="vote">
+  </form>
   <script src="./bower_components/jquery/dist/jquery.min.js"></script>
   <script src="../socket.io/socket.io.js"></script>
   <script src="./index.js"></script>
